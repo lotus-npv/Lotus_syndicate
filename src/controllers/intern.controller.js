@@ -18,7 +18,9 @@ const getInternById = async (req, res) => {
 }
 
 const insertNewIntern = async (req, res) => {
-    const mysqlDatetime = moment().utcOffset("+07:00").format("YYYY-MM-DDTHH:mm:ssZ");
+    const mysqlDatetime = moment().utcOffset("+07:00").format("YYYY-MM-DDTHH:mm:ss");
+
+    const date = new Date();
 
     let { firstName, middleName, lastName, dob, avata, dispatching_company_id, receiving_factory_id, career_id, address, passport_code, alien_card_number, create_by, update_by } = req.body;
 
