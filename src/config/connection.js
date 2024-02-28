@@ -5,7 +5,7 @@ console.log("Creating connection pool...");
 const pool = mysql.createPool({
     host: 'localhost',
     user: 'admin',
-    password: 'TiniWorld1@3',
+    password: 'nampp2024',
     database: 'lotus_syndication'
 })
 
