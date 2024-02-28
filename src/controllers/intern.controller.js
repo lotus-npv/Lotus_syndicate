@@ -1,5 +1,5 @@
-import pool from '../config/connection';
-import moment from "moment";
+const pool = require('../config/connection');
+const moment = require('moment');
 
 const getAllIntern = async (req, res) => {
     let sqlString = 'SELECT * FROM intern';

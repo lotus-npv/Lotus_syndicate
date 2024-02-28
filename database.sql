@@ -22,7 +22,7 @@ create table if not exists intern
     passport_code varchar(50), 
     alien_card_number varchar(50),
     create_at datetime,
-    creat_by int,
+    create_by int,
     update_at datetime,
     update_by int,
 
