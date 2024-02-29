@@ -1,6 +1,7 @@
-drop database if exists lotus_syndication;
-create database lotus_syndication default character set utf8 collate utf8_unicode_ci;
-use lotus_syndication;
+-- Active: 1709140861283@@45.252.251.108@3306@lotusocean_jp_app
+drop database if exists lotusocean_jp_app;
+create database lotusocean_jp_app default character set utf8 collate utf8_unicode_ci;
+use lotusocean_jp_app;
 
 
 -- tạo bảng thuc tap sinh
@@ -58,12 +59,10 @@ create table if not exists receiving_factory (
     address varchar(100),
     phone_number varchar(20),
     career_id int, -- nganh nghe chuyen
-
     create_at datetime,
     creat_by int,
     update_at datetime,
     update_by int,
-
     foreign key (representative) references users (id),
     foreign key (employee_in_charge_of_the_job) references users (id),
     foreign key (employee_in_charge_of_lifestyle) references users (id)
@@ -72,13 +71,13 @@ create table if not exists receiving_factory (
 -- tao bang cho danh sach nganh nghe
 create table if not exists career (
     id int primary key auto_increment,
-    name varchar(50), -- ten nganh nghe
+    name varchar(50) not null, -- ten nganh nghe
     description varchar(50), -- mo ta nganh nghe
-
     create_at datetime,
     creat_by int,
     update_at datetime,
     update_by int,
+    delete_at datetime
 );
 
 
@@ -87,7 +86,6 @@ create table if not exists roles (
     id int primary key auto_increment,
     name varchar(50),
     description varchar(50),
-
     create_at datetime,
     creat_by int,
     update_at datetime,
@@ -101,7 +99,7 @@ create table if not exists users_type (
     create_at datetime,
     creat_by int,
     update_at datetime,
-    update_by int,
+    update_by int
 );
 
 -- tao bang người dùng (chưa ok)
@@ -114,14 +112,11 @@ create table if not exists users (
     position varchar(100), -- chức vụ
     phone_number varchar(20),
     email varchar(50),
-
-
     create_at datetime,
     creat_by int,
     update_at datetime,
     update_by int,
-
-    foreign key (users_type_id) references users_type (id),
+    foreign key (users_type_id) references users_type (id)
 );
 
 -- tao bang phan quyen người dùng
@@ -132,8 +127,6 @@ create table if not exists permission  (
     can_read BOOLEAN NOT NULL DEFAULT false,
     can_update BOOLEAN NOT NULL DEFAULT false,
     can_delete BOOLEAN NOT NULL DEFAULT false,
-    -- thêm các quyền khác cần phân cho các đối tượng người dùng
-    
     create_at datetime,
     creat_by int,
     update_at datetime,
