@@ -26,7 +26,6 @@ create table if not exists intern
     create_by int,
     update_at datetime,
     update_by int,
-
     foreign key (dispatching_company_id) references dispatching_company (id),
     foreign key (receiving_factory_id) references receiving_factory (id),
     foreign key (career_id) references career (id)
